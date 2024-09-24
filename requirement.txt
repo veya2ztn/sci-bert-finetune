@@ -1,0 +1,4 @@
+fastchat
+transformers
+uniem
+accelerate

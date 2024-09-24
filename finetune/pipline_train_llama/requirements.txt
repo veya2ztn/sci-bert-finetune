@@ -1,0 +1,5 @@
+numpy
+sentencepiece
+transformers==4.28.0
+deepspeed @ git+https://github.com/HuangLK/DeepSpeed.git@dev
+flash_attn

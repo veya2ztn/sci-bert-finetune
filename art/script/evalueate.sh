@@ -1,0 +1,13 @@
+torchrun --nproc_per_node 1 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 60000 evaluate_open_retrieval.py \
+--checkpoint-activations --seq-length 512 --max-position-embeddings 512 \
+--load "" \
+--indexed-evidence-bert-tokenized-data-path data/beir/data/evidence-beir-mmap/scifact-indexed-mmap/scifact-beir-evidence_text_document \
+--indexed-title-bert-tokenized-data-path data/beir/data/evidence-beir-mmap/scifact-indexed-mmap/scifact-beir-evidence_title_document \
+--evidence-data-path data/beir/data/evidence-beir/scifact.tsv \
+--embedding-path ./embedding-path/art-finetuning-embedding-beir/scifact-beir-checkpoints/m3e-base.pkl \
+--batch-size 2 --seq-length-retriever 256 --vocab-file ./bert-vocab/bert-large-uncased-vocab.txt \
+--qa-file-test data/beir/data/BEIR/scifact-test.csv --num-workers 2 --report-topk-accuracies 1 5 10 20 100 \
+--fp16 --trec-eval --topk-retrievals 100 --save-topk-outputs-path data/beir/data/retriever-topk-outputs \
+--max-training-rank 8 --num-layers 12 --hidden-size 768 --num-attention-heads 12 --kv-channels 64 \
+--ffn-hidden-size 3072 --model-parallel-size 1 \
+--retriever_model_name "moka-ai/m3e-base"
